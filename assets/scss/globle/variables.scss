@@ -1,0 +1,156 @@
+// Import Bulma's core
+// @import "~bulma/sass/utilities/_all";
+
+// Set your colors
+$primary: #E2001A;
+$secondary: #374151;
+
+// Surface colors
+$white: #ffffff;
+$white-a80: rgba(255, 255, 255, 0.8);
+$white-a60: rgba(255, 255, 255, 0.6);
+$white-a40: rgba(255, 255, 255, 0.4);
+$black: #000000;
+
+
+// Greytones
+$grey-900: #111827;
+$grey-900-a70: rgba(17, 24, 39, 0.7);
+$grey-900-a30: rgba(17, 24, 39, 0.3);
+$grey-800: #1F2937;
+$grey-700: $secondary;
+$grey-700-a30: rgba(55, 65, 81, 0.30);
+$grey-700-a15: rgba(55, 65, 81, 0.15);
+$grey-600: #4B5563;
+$grey-500: #6B7280;
+// $grey-400: #9CA3AF;
+$grey-400: #70767e;
+$grey-300: #D1D5DB;
+$grey-200: #E5E7EB;
+$grey-100: #F3F4F6;
+$grey-50: #F8F9FA;
+
+
+// Accent colors
+$red-700: #B30511;
+$red-600: #CC0511;
+$red-500: $primary;
+$red-500-a60: rgba(226, 0, 26, 0.6);
+$red-500-a30: rgba(226, 0, 26, 0.3);
+$red-500-a15: rgba(226, 0, 26, 0.15);
+$red-500-15: rgba(227, 6, 19, 0.15);
+
+
+// Home Gradients
+$gradient-blue: linear-gradient(130deg, rgba(0, 148, 181, 1) 0%, rgba(129, 220, 226, 1) 90%);
+$gradient-blue-a60: linear-gradient(130deg, rgba(0, 148, 181, 0.6) 0%, rgba(129, 220, 226, 0.36) 90%);
+$gradient-blue-a8: linear-gradient(130deg, rgba(0, 148, 181, 0.08) 0%, rgba(129, 220, 226, 0.08) 90%);
+$gradient-violet: linear-gradient(130deg, rgba(139, 78, 176, 1) 0%, rgba(119, 167, 223, 1) 90%);
+$gradient-violet-a60: linear-gradient(130deg, rgba(139, 78, 176, 0.6) 0%, rgba(119, 167, 223, 0.36) 90%);
+$gradient-violet-a8: linear-gradient(130deg, rgba(139, 78, 176, 0.08) 0%, rgba(119, 167, 223, 0.08) 90%);
+$gradient-peach: linear-gradient(130deg, rgba(240, 75, 141, 1) 0%, rgba(255, 152, 95, 1) 90%);
+$gradient-peach-a60: linear-gradient(130deg, rgba(240, 75, 141, 0.6) 0%, rgba(255, 152, 95, 0.36) 90%);
+$gradient-peach-a8: linear-gradient(130deg, rgba(240, 75, 141, 0.08) 0%, rgba(255, 152, 95, 0.08) 90%);
+$gradient-pink: linear-gradient(130deg, rgba(214, 68, 129, 1) 0%, rgba(213, 115, 224, 1) 90%);
+$gradient-pink-a60: linear-gradient(130deg, rgba(214, 68, 129, 0.6) 0%, rgba(213, 115, 224, 0.36) 90%);
+$gradient-pink-a8: linear-gradient(130deg, rgba(214, 68, 129, 0.08) 0%, rgba(213, 115, 224, 0.08) 90%);
+$gradient-green: linear-gradient(130deg, rgba(16, 183, 123, 1) 0%, rgba(143, 223, 94, 1) 90%);
+$gradient-green-a60: linear-gradient(130deg, rgba(16, 183, 123, 0.6) 0%, rgba(143, 223, 94, 0.36) 90%);
+$gradient-green-a8: linear-gradient(130deg, rgba(16, 183, 123, 0.08) 0%, rgba(143, 223, 94, 0.08) 90%);
+$gradient-gold: linear-gradient(130deg, rgba(186, 115, 9, 1) 0%, rgba(238, 187, 110, 1) 90%);
+$gradient-gold-a60: linear-gradient(130deg, rgba(186, 115, 9, 0.6) 0%, rgba(238, 187, 110, 0.36) 90%);
+$gradient-gold-a8: linear-gradient(130deg, rgba(186, 115, 9, 0.08) 0%, rgba(238, 187, 110, 0.08) 90%);
+
+
+
+// Embed colors
+$embed-text: #1C6699;
+$embed-text-a60: rgba(28, 102, 153, 0.6);
+$embed-text-a30: rgba(28, 102, 153, 0.3);
+$embed-text-a15: rgba(28, 102, 153, 0.15);
+$embed-bg: #E4F1F3;
+$embed-bg-a60: rgba(228, 241, 243, 0.6);
+
+
+
+// Typography
+
+$h1-size: 37; // Not in use
+$h2-size: 31;
+$h3-size: 25;
+$h4-size: 20;
+$h5-size: 18; // Not in use
+$h6-size: 16; // Not in use
+
+$fourX-large: 61px;
+$threeX-large: 49px;
+$twoX-large: 39px;
+$x-large: 31px;
+$large: 25px;
+$base: 20px;
+$base-content: 20px;
+$small: 16px;
+
+
+// For tablet
+$tab-fourX-large: 45px;
+$tab-threeX-large: 37px;
+$tab-twoX-large: 28px;
+$tab-x-large: 25px;
+$tab-large: 21px;
+$tab-base: 18px;
+$tab-base-content: 18px;
+$tab-small: 15px;
+
+
+// Lineheight
+$lineheight-fourX-large: 115%;
+$lineheight-threeX-large: 115%;
+$lineheight-twoX-large: 115%;
+$lineheight-x-large: 115%;
+$lineheight-large: 115%;
+$lineheight-base: 140%;
+$lineheight-base-content: 150%;
+$lineheight-small: 140%;
+
+
+// Font Weight
+$normal: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
+
+
+// Animations
+//===========================================
+
+// Easing Curves
+$ease-in: cubic-bezier(0.75, 0.09, 0.61, 0.98);
+$ease-out: cubic-bezier(0.16, 0.32, 0.21, 93);
+$ease-in-out: cubic-bezier(0.48, 0.04, 0.25, 1);
+$ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+
+// Durations
+$duration-fast: 250;
+$duration-normal-1: 350;
+$duration-normal-2: 450;
+$duration-slow: 600;
+
+// Offsets
+$offset-normal: 20px;
+$offset-big: 50px;
+
+
+
+// Column
+$column-gap: 56;
+$container: 1290px;
+$gutter: 24px;
+
+
+$grid-breakpoints: (xs: 0,
+  sm: 576px,
+  md: 769px,
+  lg: 992px,
+  ml: 1200px,
+  xl: 1401px);

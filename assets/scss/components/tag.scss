@@ -1,0 +1,84 @@
+
+.filter-tag {
+    padding: 7px 16px 5px;
+    @include small;
+    z-index: 2;
+    position: relative;
+    background: none;
+    display: table;
+    color: $secondary;
+    @include transition(all, $duration-fast, $ease-in-out);
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        border: 2px solid $grey-200;
+        z-index: -1;
+        @include transition(all, $duration-fast, $ease-in-out);
+    }
+    &:after {
+        content: '' !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 0;
+        background-color: $primary;
+        z-index: -1;
+        transition: background-color, transform #{$duration-fast}ms $ease-in-out;
+        display: block;
+        font-size: 0 !important;
+        margin: 0 !important;
+        width: 100%;
+        transform-origin: right center;
+        transform: scaleX(0);
+    }
+    &:hover {
+        &:before {
+            border-color: $grey-300;
+        }
+    }
+    &:active {
+        &:before {
+            border-color: $grey-400;
+        }
+    }
+    &:focus-visible {
+        &:before {
+            border-color: $grey-300;
+        }
+    }
+
+    // Selected tag
+    &.active {
+        background: $red-500;
+        color: $white;
+        &:before {
+            border-color: $red-500;
+        }
+        &:after {
+            background-color: $red-600;
+        }
+        &:hover {
+            background: $primary;
+            color: $white;
+            &:after {
+                transform-origin: left center;
+                transform: scaleX(1);
+            }
+        }
+        &:active {
+            &:after {
+                background-color: $red-700;
+            }
+        }
+        &:focus-visible {
+            &:after {
+                background-color: $red-600;
+            }
+        }
+    }
+}

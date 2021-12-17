@@ -1,0 +1,182 @@
+:root {
+    --app-height: 100%;
+    --pop-diff: 17px;
+}
+
+#navigation {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: $white;
+    box-shadow: 0px 4px 16px rgba(26, 32, 44, 0.04);
+    overflow: hidden;
+    height: 0;
+    .nav-main-row {
+        max-height: 100vh;
+        max-height: var(--app-height);
+        overflow: hidden;
+        overflow-y: auto;
+    }
+    .nav-main-box {
+        
+    }
+    .navigation-row {
+        .columns {
+            margin-bottom: 0;
+            @include media('tab') {
+                margin: 0;
+            }
+            .column {
+                margin-bottom: 0;
+                @include media('tab') {
+                    padding: 0;
+                    margin: 0;
+                }
+                &:last-child {
+                    @include media('tab') {
+                        margin: 0 -24px;
+                    }
+                }
+                &.menu-col {
+                    z-index: 2;
+                    position: relative;
+                }
+            }
+        }
+    }
+    .navigation-box {
+        padding: 48px 0 58px;
+        @include media('tab-mid') {
+            padding: 38px 0 48px;
+        }
+        @include media('tab') {
+            padding: 28px 0 48px;
+        }
+        &.nav-right {
+            padding-left: 48px;
+            position: relative;
+            z-index: 1;
+            @include media('tab-mid') {
+                padding-left: 38px;
+                @include media('tab') {
+                    padding: 48px 24px;
+                }
+            }
+            &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 50vw;
+                background: $grey-50;
+                z-index: -1;
+                @include media('tab') {
+                    width: 100%;
+                }
+            }
+        }
+        .menu {
+            li {
+                margin-bottom: 24px;
+                @include large;
+                font-weight: $bold;
+                @include media('desk') {
+                    font-size: rem(23);
+                }
+                @include media('tab-mid') {
+                    font-size: rem(22);
+                }
+                @include media('tab') {
+                    font-size: rem(21);
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                a {
+                    padding-left: 44px;
+                    position: relative;
+                    @include media('tab') {
+                        padding-left: 40px;
+                    }
+                    em {
+                        position: absolute;
+                        left: 0;
+                        top: -5px;
+                        color: $grey-600;
+                        @extend %line-transition;
+                        &:before {
+                            font-size: rem(32);
+                        }
+                    }
+                    &:hover {
+                        em {
+                            @extend %line-hover-color;
+                        }
+                    }
+                    &:focus {
+                        em {
+                            @extend %line-focus-color;
+                        }
+                    }
+                }
+            }
+        }
+        .nav-list {
+            li {
+                margin-bottom: 28px;
+                @include base;
+                @include media('tab-mid') {
+                    font-size: rem(19);
+                }
+                @include media('tab') {
+                    font-size: rem(18);
+                }
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                a {
+                    padding-left: 40px;
+                    position: relative;
+                    display: block;
+                    em {
+                        position: absolute;
+                        left: 0;
+                        top: -2px;
+                        color: $grey-600;
+                        @extend %line-transition;
+                        &:before {
+                            font-size: rem(32);
+                            @include media('tab') {
+                                font-size: rem(28);
+                            }
+                        }
+                    }
+                    &:hover {
+                        em {
+                            @extend %line-hover-color;
+                        }
+                    }
+                    &:focus {
+                        em {
+                            @extend %line-focus-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.navigation-overlay {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: $grey-900;
+    opacity: 0.3;
+    cursor: pointer;
+    z-index: -2;
+}
+#navigation, .navigation-overlay {display: none;}

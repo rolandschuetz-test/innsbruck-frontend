@@ -1,0 +1,150 @@
+
+.quicklinks-section {
+    padding: 84px 0 88px;
+    overflow: hidden;
+    @include media('desk-large') {
+        padding: 80px 0 84px;
+    }
+    @include media('desk') {
+        padding: 70px 0 74px;
+    }
+    @include media('tab-mid') {
+        padding: 60px 0 64px;
+    }
+    @include media('tab') {
+        padding: 50px 0 54px;
+    }
+    @include media('phone') {
+        padding: 54px 0 48px;
+    }
+}
+
+.quicklinks-block {
+    padding: 32px 0;
+    overflow: hidden;
+    @include media('phone') {
+        padding: 30px 0 24px;
+    }
+}
+
+.quicklinks-btn {
+    padding-top: 56px;
+    @include media('tab-mid') {
+        padding-top: 40px;
+    }
+    @include media('tab') {
+        padding-top: 32px;
+    }
+}
+
+.quicklinks-row {
+    .columns {
+        .column {
+            &:nth-child(6) ~ .column {
+                @include media('tab') {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.quicklink-box {
+    padding-right: 20px;
+    @include media('tab') {
+        padding-right: 0;
+    }
+    a {
+        display: flex;
+        position: relative;
+        &:after {
+            display: none;
+        }
+        .quicklink-icon {
+            position: relative;
+            // left: 0;
+            width: 40px;
+            @include media('tab') {
+                width: 36px;
+            }
+            em {
+                display: block;
+                position: absolute;
+                left: 0;
+                top: -4px;
+                &:before {
+                    font-size: rem(40);
+                    color: $grey-600;
+                    @include transition(color, 300, $ease-in-out);
+                    @include media('tab') {
+                        font-size: rem(36);
+                    }
+                }
+            }
+            + .quicklink-info {
+                width: calc(100% - 40px);
+                padding-left: 16px;
+                padding-top: 4px;
+                @include media('tab') {
+                    width: calc(100% - 36px);
+                    padding-left: 12px;
+                }
+            }
+        }
+        &:hover {
+            .quicklink-icon {
+                em {
+                    &:before {
+                        @extend %line-hover-color;
+                    }
+                }
+            }
+            .quicklink-info {
+                h2 {
+                    @extend %line-hover-color;
+                    &:after {
+                        @extend %line-hover-color;
+                    }
+                    .line {
+                        @extend %line-hover;
+                    }
+                }
+            }
+        }
+        &:focus {
+            .quicklink-icon {
+                em {
+                    &:before {
+                        @extend %line-focus-color;
+                    }
+                }
+            }
+            .quicklink-info {
+                h2 {
+                    @extend %line-focus-color;
+                    &:after {
+                        @extend %line-focus-color;
+                    }
+                    .line {
+                        @extend %line-focus;
+                    }
+                }
+            }
+        }
+        &[href^="http"], &[href^="http"] {
+            h2 {
+                @extend %external-link;
+            }
+        }
+    }
+    .quicklink-info {
+        h2 {
+            @include large;
+            margin-bottom: 8px;
+            @include transition(color, 300, $ease-in-out);
+            @include media('tab') {
+                font-size: rem(21);
+            }
+        }
+    }
+}

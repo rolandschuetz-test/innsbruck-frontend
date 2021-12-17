@@ -1,0 +1,56 @@
+
+.page-banner {
+    padding-top: 136px;
+    @include media('desk') {
+        padding-top: 120px;
+    }
+    @include media('tab-mid') {
+        padding-top: 96px;
+    }
+    body.info-active & {
+        padding-top: 192px;
+        @include media('desk') {
+            padding-top: 176px;
+        }
+        @include media('tab-mid') {
+            padding-top: 145px;
+        }
+    }
+}
+.default-banner {
+    background: $grey-50;
+    .page-banner-row {
+        padding: 16px 0 56px;
+        max-width: 960px;
+        @include media('tab-mid') {
+            padding: 8px 0 48px;
+        }
+        @include media('tab') {
+            padding: 0 0 40px;
+        }
+        @include media('phone') {
+            padding: 0 0 32px;
+        }
+        h2 {
+            padding: 32px 0 0;
+            margin-bottom: 0;
+            @include twoX-large;
+            @include media('tab-mid') {
+                padding: 24px 0 0;
+                font-size: rem(35);
+            }
+            @include media('tab') {
+                padding: 16px 0 0;
+                font-size: rem(31);
+            }
+            @include media('phone') {
+                padding: 8px 0 0;
+                font-size: rem(28);
+            }
+        }
+        p {
+            max-width: 630px;
+            margin-top: 16px;
+        }
+    }
+}

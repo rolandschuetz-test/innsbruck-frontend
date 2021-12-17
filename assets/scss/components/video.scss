@@ -1,0 +1,388 @@
+
+.video-block {
+    padding: 32px 0px;
+    @include media('tab') {
+        padding: 20px 0px;
+    }
+    .video-info {
+        display: block;
+        position: relative;
+        @include overlay;
+        .b-image-wrapper {
+            overflow: hidden;
+            img {
+                @include transition(all, $duration-normal-1, $ease-in-out);
+                transform: scale(1.00);
+            }
+        }
+        .video-play {
+            height: 80px;
+            width: 80px;
+            background: $white;
+            @extend %vh-center;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $grey-700;
+            @include transition(all, $duration-normal-1, $ease-in-out);
+            em {
+                display: block;
+                &:before {
+                    font-size: rem(44);
+                }
+            }
+        }
+        &:hover {
+            &:before {
+                @include overlay-show;
+            }
+            .b-image-wrapper {
+                img {
+                    @include imgHover;
+                }
+            }
+            .video-play {
+                transform: translate(-50%, -50%) scale(0.95);
+                color: $red-500;
+            }
+        }
+        &:focus {
+            &:before {
+                @include overlay-show;
+            }
+            .b-image-wrapper {
+                img {
+                    @include imgHover;
+                }
+            }
+            .video-play {
+                transform: translate(-50%, -50%) scale(0.95);
+                color: $red-500;
+            }
+        }
+    }
+}
+
+// Plyr video
+.timelimit-section {
+}
+
+.video-box {
+    .plyr button.plyr__control--overlaid {
+        height: 80px;
+        width: 80px;
+        background: $white;
+        @extend %vh-center;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $grey-700;
+        border-radius: 0;
+        opacity: 1;
+        @include transition(all, $duration-normal-1, $ease-in-out);
+        @include media('tab') {
+            height: 48px;
+            width: 48px;
+        }
+        &:before {
+            content: "\e937";
+            @extend %icomoon;
+            font-size: rem(44);
+            @extend %vh-center;
+            @include media('tab') {
+                font-size: rem(26);
+            }
+        }
+        svg {
+            display: none;
+        }
+    }
+    .plyr--video {
+        &.plyr--stopped, &.plyr--hide-controls {
+            .plyr__controls {
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+                transform: translateY(100%);
+            }
+        }
+        .plyr__poster {
+            @include overlay;
+            position: absolute;
+            @include transition(all, $duration-normal-1, $ease-in-out);
+            transform: scale(1.00);
+        }
+        &:hover {
+            .plyr__poster {
+                @include imgHover;
+                &:before {
+                    @include overlay-show;
+                }
+            }
+            button.plyr__control--overlaid {
+                transform: translate(-50%, -50%) scale(0.95);
+                color: $red-500;
+            }
+        }
+        &:active {
+            .plyr__poster {
+                @include imgHover;
+                &:before {
+                    @include overlay-show;
+                }
+            }
+            button.plyr__control--overlaid {
+                transform: translate(-50%, -50%) scale(0.95);
+                color: $red-600;
+            }
+        }
+    }
+    .plyr--video {
+        .plyr__controls {
+            padding: 16px 24px;
+            background: $grey-50;
+            color: $grey-700;
+            @include transition(all, $duration-normal-1, $ease-in-out);
+            .plyr__controls__item {
+                margin-left: 24px;
+                &:first-child {
+                    padding: 0;
+                    width: 32px;
+                    height: 32px;
+                    position: relative;
+                    font-size: rem(32);
+                    background: none;
+                    margin-left: 0;
+                    &:before {
+                        content: "\e937";
+                        @extend %icomoon;
+                        @extend %vh-center;
+                    }
+                    svg {
+                        display: none;
+                    }
+                    &.plyr__control--pressed {
+                        &:before {
+                            content: "\e936";
+                        }
+                    }
+                }
+
+                // Current time
+                &.plyr__time {
+                    @include small;
+                    color: $grey-700;
+                    padding: 0;
+                    &.plyr__time--duration {
+                        margin-left: 0;
+                        &::before {
+                            content: "/";
+                            margin: 0 4px;
+                        }
+                    }
+                }
+
+                // Volume
+                &.plyr__volume {
+                    max-width: inherit;
+                    min-width: inherit;
+                    width: auto;
+                    .plyr__control {
+                        padding: 0;
+                        width: 24px;
+                        height: 24px;
+                        position: relative;
+                        font-size: rem(24);
+                        background: none;
+                        margin-left: 0;
+                        &:before {
+                            content: "\e939";
+                            @extend %icomoon;
+                            @extend %vh-center;
+                        }
+                        svg {
+                            display: none;                        
+                        }
+                        &.plyr__control--pressed {
+                            &:before {
+                                content: "\e938";
+                            }
+                        }
+                    }
+                    input[type="range"] {
+                        display: none;
+                    }
+                }
+
+                // Full screen
+                &[data-plyr=fullscreen] {
+                    padding: 0;
+                    width: 24px;
+                    height: 24px;
+                    position: relative;
+                    font-size: rem(24);
+                    background: none;
+                    &:before {
+                        content: "\e917";
+                        @extend %icomoon;
+                        @extend %vh-center;
+                    }
+                    svg {
+                        display: none;                        
+                    }
+                    &.plyr__control--pressed {
+                        &:before {
+                            content: "\e916";
+                        }
+                    }
+                }
+            }
+
+            // Hover style for controls
+            .plyr__controls__item.plyr__control, .plyr__controls__item .plyr__control {
+                background: none;
+                color: $grey-700;
+                @include transition(all, $duration-normal-1, $ease-in-out);
+                &:hover {
+                    color: $red-500;
+                }
+                &:active {
+                    color: $red-600;
+                }
+            }
+
+        }
+        .plyr__progress input[type=range], .plyr__progress__buffer {
+        }
+        .plyr__progress__buffer {
+            height: 2px;
+            &::-moz-progress-bar {
+                height: 2px;
+                border-radius: 0;
+                margin-top: 0;
+            }
+        }
+        &.plyr--full-ui {
+            input[type=range] {
+                color: $grey-700;
+                border-radius: 0;
+                &::-moz-range-progress, &::-moz-range-track {
+                    height: 2px !important;
+                    box-shadow: none;
+                }
+
+            }
+        }
+    }
+}
+.plyr--video .plyr__progress__buffer {
+    color: #f00;
+    height: 2px;
+    margin-top: -1px;
+}
+
+.plyr--full-ui {
+    input[type=range] {
+        color: $grey-700;
+        height: 26px;
+        cursor: pointer;
+    }
+    &.active {
+        .plyr__time {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+}
+
+
+input[type=range] {
+    -webkit-appearance: none;
+    border-radius: 0 !important;
+}
+
+.plyr--full-ui input[type="range"]::-moz-range-progress {
+    height: 26px !important;
+    box-shadow: none;
+}
+
+.plyr__progress__buffer::-moz-progress-bar {
+    background: transparent;
+}
+
+.plyr__progress__buffer::-webkit-progress-value {
+    background: transparent;
+}
+
+.plyr--full-ui.plyr--video input[type="range"]::-moz-range-track {
+    background-color: $grey-300 !important;
+}
+.plyr--full-ui.plyr--video input[type=range]::-webkit-slider-runnable-track {
+    background-color: $grey-300 !important;
+}
+
+
+input[type=range]::-webkit-slider-runnable-track {
+    height: 2px !important;
+    color: $grey-700;
+    border: none;
+    border-radius: 0;
+    border: 0;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 7px !important;
+    width: 7px !important;
+    border-radius: 100%;
+    background: $grey-700 !important;
+    margin-top: -3px !important;
+    transition: all 200ms ease-in-out;
+    box-shadow: none !important;
+}
+
+
+input[type=range]::-moz-range-track {
+    height: 2px !important;
+    color: $grey-700;
+    border: 0;
+    border-radius: 0;
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+}
+
+input[type=range]::-moz-range-thumb {
+    appearance: none;
+    border: none;
+    height: 7px!important;
+    width: 7px!important;
+    border-radius: 100%;
+    background: $grey-700 !important;
+    margin-top: -3px!important;
+    transition: all 200ms ease-in-out;
+    box-shadow: none!important;
+}
+
+input[type=range]::-ms-track {
+    height: 2px !important;
+    color: $grey-700;
+    border: none;
+    border-radius: 0;
+    border: 0;
+    box-shadow: none;
+}
+input[type=range]::-ms-thumb {
+    appearance: none;
+    border: none;
+    height: 7px!important;
+    width: 7px!important;
+    border-radius: 100%;
+    background: $grey-700 !important;
+    margin-top: -3px!important;
+    transition: all 200ms ease-in-out;
+    box-shadow: none!important;
+}

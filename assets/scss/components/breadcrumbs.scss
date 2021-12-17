@@ -1,0 +1,49 @@
+
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    li {
+        margin-right: 12px;
+        padding-right: 24px;
+        position: relative;
+        @include small;
+        color: $grey-900;
+        @include media('tab') {
+            display: none;
+        }
+        &:before {
+            content: "\e933";
+            @extend %v-center;
+            @extend %icomoon;
+            right: 0;
+            height: 12px;
+            width: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: rem(12);
+        }
+        &:last-child {
+            margin-right: 0;
+            padding-right: 0;
+            &:before {
+                display: none;
+            }
+        }
+        &:nth-last-child(2) {
+            @include media('tab') {
+                display: block;
+                padding-right: 0;
+                margin-right: 0;
+                padding-left: 16px;
+                &:before {
+                    transform: rotate(180deg) translateY(50%);
+                    right: auto;
+                    left: 0;
+                }
+            }
+        }
+    }
+}

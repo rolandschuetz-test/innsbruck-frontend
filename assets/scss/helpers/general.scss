@@ -1,0 +1,77 @@
+
+
+
+// Column
+.columns, .columns:last-child, .columns:not(:last-child) {
+    margin: 0 #{-($column-gap / 2)}px #{-$column-gap}px;
+}
+.column {
+    padding: 0 #{($column-gap / 2)}px;
+    margin-bottom: #{($column-gap)}px;
+}
+.container {
+    max-width: $container + $gutter * 2 !important;
+    padding: 0 $gutter;
+}
+
+// Links
+a[href^="http"], a[href^="http"] {
+    @extend %external-link;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    border: 0;
+}
+
+
+.page-content {
+    padding: 64px 0 81px;
+    @include media('desk') {
+        padding: 56px 0 81px;
+    }
+    @include media('tab-mid') {
+        padding: 48px 0 81px;
+    }
+    @include media('tab') {
+        padding: 40px 0 72px;
+    }
+    @include media('phone') {
+        padding: 32px 0 72px;
+    }
+    &.default-space {
+        padding: 32px 0 49px;
+        @include media('phone') {
+            padding: 8px 0 40px;
+        }
+    }
+}
+
+// Background colours
+.bg-grey-50 {
+    background-color: $grey-50;
+}
+
+.color-grey-500 {
+    color: $grey-500;
+}
+
+.block:not(:last-child) {
+    margin-bottom: 0;
+    padding-bottom: 56px;
+    &:last-child {
+        padding-bottom: 0;
+    }
+}
+
+.block-space {
+    margin-bottom: 80px;
+}

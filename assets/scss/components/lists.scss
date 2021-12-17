@@ -1,0 +1,96 @@
+
+// Ordered List
+.ordered-list {
+    padding: 8px 0px;
+    margin: 0;
+    list-style: none;
+    counter-reset: ordered-list;
+    li {
+        padding-left: 40px;
+        position: relative;
+        margin: 0 0 12px;
+        @include media('phone') {
+            padding-left: 20px;
+        }
+        &:before {
+            counter-increment: ordered-list;
+            content: counter(ordered-list)".";
+            position: absolute;
+            left: 16px;
+            top: 0;
+            color: $grey-500;
+            font-weight: $bold;
+            @include media('phone') {
+                left: 0;
+            }
+        }
+        ol {
+            counter-reset: ordered-sub-list;
+            margin: 12px 0 0;
+            list-style: none;
+            li {
+                padding-left: 24px;
+                &:before {
+                    counter-increment: ordered-sub-list;
+                    content: counter(ordered-sub-list)".";
+                    left: 0;
+                }
+            }
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+// Unordered List
+.unordered-list {
+    padding: 8px 0px;
+    margin: 0;
+    list-style: none;
+    li {
+        padding-left: 40px;
+        position: relative;
+        margin: 0 0 12px;
+        @include media('phone') {
+            padding-left: 20px;
+        }
+        &:before {
+            content: "";
+            position: absolute;
+            left: 16px;
+            top: 9px;
+            height: 8px;
+            width: 8px;
+            background: $grey-500;
+            @include media('phone') {
+                left: 0;
+            }
+        }
+        ul {
+            margin: 12px 0 0;
+            list-style: none;
+            li {
+                padding-left: 24px;
+                &:before {
+                    left: 0;
+                }
+            }
+        }
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    // 2nd and 4th leval
+    > li > ul, > li > ul > li > ul > li > ul {
+        > li {
+            &:before {
+                height: 9px;
+                width: 9px;
+                background: none;
+                border: 2px solid $grey-500;
+            }
+        }
+    }
+}

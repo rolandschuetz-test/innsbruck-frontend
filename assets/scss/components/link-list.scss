@@ -1,0 +1,61 @@
+
+.link-block {
+    padding: 32px 0px;
+    .link-box {
+        > h2, > h3 {
+            margin-top: -32px;
+            margin-bottom: 16px;
+        }
+    }
+}
+.link-box {
+    ul {
+        border-top: 2px solid $grey-100;
+    }
+    li {
+        border-bottom: 2px solid $grey-100;
+        &:first-child {
+        }
+        a {
+            display: block;
+            padding: 25px 32px 23px 0;
+            position: relative;
+            @include transition(all, $duration-normal-1, $ease-in-out);
+            &:before {
+                content: "\e933";
+                @extend %icomoon;
+                @extend %v-center;
+                right: 0;
+                font-size: rem(24);
+                color: $grey-600;
+                @include transition(all, $duration-normal-1, $ease-in-out);
+            }
+            .category {
+                color: $grey-500;
+                font-style: normal;
+                @extend %line-transition;
+            }
+            &[href^=http], &[href^=http] {
+                &:before {
+                    display: none;
+                }
+                &:after {
+                    position: absolute;
+                    @extend %v-center;
+                    right: 0;
+                }
+            }
+            &:hover {
+                &:before, .category {
+                    @extend %line-hover-color;
+                }
+            }
+            &:focus {
+                &:before, .category {
+                    @extend %line-focus-color;
+                }
+            }
+        }
+    }
+}
+

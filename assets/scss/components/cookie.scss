@@ -1,0 +1,238 @@
+.cookie-small {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 112;
+    background: $white;
+    padding: 34px 0 24px;
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.05);
+    display: none;
+    .cookie-small-main {
+        display: flex;
+        align-items: center;
+        @include media('tab') {
+            flex-wrap: wrap;
+        }
+        .cookie-small-data {
+            width: calc(100% - 332px);
+            padding-right: 32px;
+            max-width: 841px;
+            @include small;
+            @include media('tab') {
+                font-size: rem(15);
+                width: 100%;
+                padding-right: 0;
+                max-width: 100%;
+            }
+            h2 {
+                @include base;
+                margin-bottom: 4px;
+                @include media('tab') {
+                    font-size: rem(18);
+                    line-height: 120%;
+                }
+            }
+        }
+        .cookie-small-btn {
+            margin-left: auto;
+            display: flex;
+            @include media('tab') {
+                margin-left: 0;
+                margin-top: 24px;
+            }
+            .button {
+                min-width: 162px;
+                @include media('tab') {
+                    min-width: auto;
+                }
+                &:not(:last-child) {
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+}
+
+.cookie-settings {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 11111;
+    display: none;
+    .cookie-setting-box {
+        position: fixed;
+        right: 32px;
+        top: 32px;
+        bottom: 32px;
+        max-width: 576px;
+        width: 100%;
+        background: $white;
+        z-index: 1;
+        @include media('tab') {
+            max-width: 100%;
+            width: auto;
+            left: 32px;
+        }
+        @include media('phone') {
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: auto;
+            height: calc(100% - 24px);
+        }
+        .cookie-close {
+            position: absolute;
+            height: 24px;
+            width: 24px;
+            color: $grey-500;
+            right: 32px;
+            top: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+            em {
+                @extend %vh-center;
+                &:before {
+                    height: 24px;
+                    width: 24px;
+                    line-height: 24px;
+                    display: block;
+                    text-align: center;
+                    font-size: rem(24);
+                }
+            }
+        }
+        .cookie-main {
+            height: calc(100% - 120px);
+            overflow: auto;
+            @include media('phone') {
+                height: calc(100% - 100px);
+            }
+            .cookie-main-box {
+                padding: 64px 32px 0 32px;
+                padding-bottom: 0;
+                display: flex;
+                flex-direction: column;
+                min-height: 100%;
+                @include media('phone') {
+                    padding: 56px 24px 0 24px;
+                }
+            }
+        }
+        .cookie-head {
+            max-width: 449px;
+            margin-bottom: 32px;
+            @include media('phone') {
+                max-width: 100%;
+                margin-bottom: 24px;
+            }
+            h4 {
+                @include large;
+                margin-bottom: 16px;
+                @include media('phone') {
+                    font-size: rem(21);
+                    line-height: 120%;
+                    margin-bottom: 8px;
+                }
+            }
+        }
+        .cookie-body {
+            padding-right: 70px;
+            @include media('phone') {
+                padding-right: 0;
+            }
+            form {
+                legend {
+                    display: none;
+                }
+            }
+        }
+        .cookie-btn-box {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            padding: 32px;
+            background: $white;
+            @include media('phone') {
+                padding: 24px;
+            }
+            .button {
+                width: 100%;
+            }
+        }
+    }
+    .cookie-backdrop {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        font-size: 0;
+        background: rgba($grey-900, 0.3);
+        cursor: pointer;
+    }
+}
+
+.cookie-block {
+    margin-bottom: 24px;
+    .field {
+        margin-bottom: 0;
+    }
+    .cookie-data {
+        padding-left: 32px;
+        .collapse-trigger {
+            a, .button {
+                display: table;
+                position: relative;
+                color: $primary !important;
+                background: none !important;
+                padding: 0;
+                padding-right: 16px;
+                @include small;
+                @include media('phone') {
+                    font-size: rem(15);
+                }
+                &:before {
+                    content: "\e932";
+                    @extend %icomoon;
+                    position: absolute;
+                    font-size: rem(12);
+                    right: 0;
+                    top: 5px;
+                    @include transition(all, 250, $ease-in-out);
+                    left: auto;
+                    bottom: auto;
+                    width: auto;
+                    border: 0;                
+                }
+                &:after {
+                    display: none !important;
+                }
+                &.open {
+                    &:before {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+        .collapse {
+            .collapse-content {
+                margin-bottom: 8px;
+            }
+        }
+        .cookie-info {
+            @include small;
+            color: $grey-500;
+            max-width: 400px;
+            @include media('phone') {
+                max-width: 100%;
+                font-size: rem(15);
+            }
+        }
+    }
+}

@@ -1,0 +1,100 @@
+
+.youtube-video-block {
+    padding: 32px 0px;
+    .youtube-video-box {
+        .youtube-video {
+            position: relative;
+            width: 100%;
+            padding-top: 56.77%;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            background: $grey-50;
+            .youtube-play {
+                @extend %vh-center;
+                font-size: 0;
+                padding: 0 !important;
+                border: 0 !important;
+                background: none !important;
+                z-index: 1;
+                width: 82px;
+                cursor: pointer;
+                @include media('tab') {
+                    width: 56px;
+                }
+                .play-img {
+                    display: block;
+                    padding-top: 70.73170731707317%;
+                    background-image: url(~assets/images/youtube-play.svg);
+                    background-size: 100% 100%;
+                    background-repeat: no-repeat;
+                    @include transition(all, $duration-normal-1, $ease-in-out);
+                }
+                // figure {
+                //     width: 100%;
+                //     @include transition(all, $duration-normal-1, $ease-in-out);
+                //     img {
+                //         display: block;
+                //     }
+                // }
+                &:hover {
+                    .play-img {
+                        transform: scale(0.95);
+                    }
+                }
+            }
+            > img {
+                width: 100%;
+                height: auto;
+                max-width: 100%;
+                @extend %vh-center;
+            }
+            iframe {
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+                border: 0;
+            }
+            .youtube-cookie-info {
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                padding: 8px 16px;
+                background-color: $primary;
+                color: $white;
+                cursor: initial;
+                z-index: 1;
+            }
+        }
+        .youtube-video-caption {
+            display: flex;
+            align-items: flex-start;
+            padding-top: 16px;
+            @include small;
+            @include media('tab') {
+                flex-wrap: wrap;
+            }
+            p {
+                padding: 0;
+                margin-right: 32px;
+                flex: 1;
+                @include media('tab') {
+                    flex: auto;
+                }
+            }
+            a {
+                margin-left: auto;
+                @include media('tab') {
+                    margin-left: 0;
+                }
+                &:after {
+                    font-size: rem(14);
+                }
+            }
+        }
+    }
+    
+}

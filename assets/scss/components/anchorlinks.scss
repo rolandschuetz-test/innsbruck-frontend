@@ -1,0 +1,40 @@
+
+.anchorlinks-box {
+    margin-top: 16px;
+    display: flex;
+    position: relative;
+    &:before {
+        @include media('tab') {
+            content: "";
+            position: absolute;
+            right: -1px;
+            top: 0;
+            bottom: 0;
+            width: 24px;
+            background: linear-gradient(270deg, #F8F9FA 0%, rgba(248, 249, 250, 0) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+    }
+    > span {
+        display: block;
+        margin-right: 16px;
+    }
+    .anchorlinks {
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+        @include media('tab') {
+            flex-wrap: nowrap;
+            overflow: auto;
+            white-space: nowrap;
+            padding-right: 24px;
+        }
+        li {
+            margin-right: 16px;
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+}

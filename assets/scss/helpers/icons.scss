@@ -1,0 +1,234 @@
+@font-face {
+  font-family: 'icomoon';
+  //src:  url('../fonts/icomoon.eot?rs60m8');
+  src:  url('../fonts/icomoon.woff?rs60m8') format('woff');
+  // src:  url('../fonts/icomoon.eot?rs60m8#iefix') format('embedded-opentype'),
+  //   url('../fonts/icomoon.ttf?rs60m8') format('truetype'),
+  //   url('../fonts/icomoon.woff?rs60m8') format('woff'),
+  //   url('../fonts/icomoon.svg?rs60m8#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+  
+  [class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    font-size: 0;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .icon-time:before {
+    content: "\e941";
+  }
+  .icon-calendar:before {
+    content: "\e942";
+  }
+  .icon-suitcase-sm:before {
+    content: "\e943";
+  }
+  .icon-city:before {
+    content: "\e93e";
+  }
+  .icon-finance:before {
+    content: "\e93f";
+  }
+  .icon-call:before {
+    content: "\e940";
+  }
+  .icon-airplane-ticket:before {
+    content: "\e900";
+  }
+  .icon-arrow-right:before {
+    content: "\e901";
+  }
+  .icon-baby:before {
+    content: "\e902";
+  }
+  .icon-backpack:before {
+    content: "\e903";
+  }
+  .icon-barrier:before {
+    content: "\e904";
+  }
+  .icon-building:before {
+    content: "\e905";
+  }
+  .icon-burger-close:before {
+    content: "\e906";
+  }
+  .icon-burger-close-desktop:before {
+    content: "\e907";
+  }
+  .icon-burger-rest:before {
+    content: "\e908";
+  }
+  .icon-burger-rest-desktop:before {
+    content: "\e909";
+  }
+  .icon-car:before {
+    content: "\e90a";
+  }
+  .icon-comment-points:before {
+    content: "\e90b";
+  }
+  .icon-digital-rathaus:before {
+    content: "\e90c";
+  }
+  .icon-dog:before {
+    content: "\e90d";
+  }
+  .icon-download:before {
+    content: "\e90e";
+  }
+  .icon-euro:before {
+    content: "\e90f";
+  }
+  .icon-external-link:before {
+    content: "\e910";
+  }
+  .icon-facebook:before {
+    content: "\e911";
+  }
+  .icon-face-mask:before {
+    content: "\e912";
+  }
+  .icon-facts:before {
+    content: "\e913";
+  }
+  .icon-file-pdf:before {
+    content: "\e914";
+  }
+  .icon-form:before {
+    content: "\e915";
+  }
+  .icon-full-screen-close:before {
+    content: "\e916";
+  }
+  .icon-full-screen-open:before {
+    content: "\e917";
+  }
+  .icon-graduate-hat:before {
+    content: "\e918";
+  }
+  .icon-heart:before {
+    content: "\e919";
+  }
+  .icon-house:before {
+    content: "\e91a";
+  }
+  .icon-id-card:before {
+    content: "\e91b";
+  }
+  .icon-info:before {
+    content: "\e91c";
+  }
+  .icon-instagram:before {
+    content: "\e91d";
+  }
+  .icon-judge-hammer:before {
+    content: "\e91e";
+  }
+  .icon-loader:before {
+    content: "\e91f";
+  }
+  .icon-location:before {
+    content: "\e920";
+  }
+  .icon-mail:before {
+    content: "\e921";
+  }
+  .icon-parcel:before {
+    content: "\e922";
+  }
+  .icon-parking:before {
+    content: "\e923";
+  }
+  .icon-parliament:before {
+    content: "\e924";
+  }
+  .icon-passport:before {
+    content: "\e925";
+  }
+  .icon-phone:before {
+    content: "\e926";
+  }
+  .icon-phonebook:before {
+    content: "\e927";
+  }
+  .icon-phone-bubble:before {
+    content: "\e928";
+  }
+  .icon-pin:before {
+    content: "\e929";
+  }
+  .icon-play-cubes:before {
+    content: "\e92a";
+  }
+  .icon-recycling:before {
+    content: "\e92b";
+  }
+  .icon-search:before {
+    content: "\e92c";
+  }
+  .icon-sign:before {
+    content: "\e92d";
+  }
+  .icon-sofa:before {
+    content: "\e92e";
+  }
+  .icon-state-and-flag:before {
+    content: "\e92f";
+  }
+  .icon-suitcase:before {
+    content: "\e930";
+  }
+  .icon-swimmer:before {
+    content: "\e931";
+  }
+  .icon-tip-down:before {
+    content: "\e932";
+  }
+  .icon-tip-right:before {
+    content: "\e933";
+  }
+  .icon-tip-up:before {
+    content: "\e934";
+  }
+  .icon-twitter:before {
+    content: "\e935";
+  }
+  .icon-video-pause:before {
+    content: "\e936";
+  }
+  .icon-video-play:before {
+    content: "\e937";
+  }
+  .icon-volume-muted:before {
+    content: "\e938";
+  }
+  .icon-volume-unmuted:before {
+    content: "\e939";
+  }
+  .icon-wedding-rings:before {
+    content: "\e93a";
+  }
+  .icon-wheelchair:before {
+    content: "\e93b";
+  }
+  .icon-world-location:before {
+    content: "\e93c";
+  }
+  .icon-youtube:before {
+    content: "\e93d";
+  }
+  

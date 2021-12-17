@@ -1,0 +1,228 @@
+/* 
+ * Body Font Style 
+*/
+@font-face{
+	font-family: "AltoProCon";
+	src:url("../fonts/AltoProCon-Normal.woff") format("woff"); 
+	// src:url("../fonts/AltoProCon-Normal.eot?#iefix") format("eot"),
+	// 	url("../fonts/AltoProCon-Normal.woff") format("woff"),
+	// 	url("../fonts/AltoProCon-Normal.ttf") format("truetype");
+	// src:url("../fonts/AltoProCon-Normal.woff") format("woff");
+	font-display: swap;
+	font-weight: 400;
+}
+
+@font-face{
+	font-family: "AltoProCon";
+	src:url("../fonts/AltoProCon-Medium.woff") format("woff");
+	// src:url("../fonts/AltoProCon-Medium.eot?#iefix") format("eot"),
+	// 	url("../fonts/AltoProCon-Medium.woff") format("woff"),
+	// 	url("../fonts/AltoProCon-Medium.ttf") format("truetype");
+	// src:url("../fonts/AltoProCon-Medium.woff") format("woff");
+	font-display: swap;
+	font-weight: 500;
+}
+
+@font-face{
+	font-family: "AltoProCon";
+	src:url("../fonts/AltoProCon-SemiBold.woff") format("woff");
+	// src:url("../fonts/AltoProCon-SemiBold.eot?#iefix") format("eot"),
+	// 	url("../fonts/AltoProCon-SemiBold.woff") format("woff"),
+	// 	url("../fonts/AltoProCon-SemiBold.ttf") format("truetype");
+	// src:url("../fonts/AltoProCon-SemiBold.woff") format("woff");
+	font-display: swap;
+	font-weight: 600;
+}
+
+@font-face{
+	font-family: "AltoProCon";
+	src:url("../fonts/AltoProCon-Bold.woff") format("woff");
+	// src:url("../fonts/AltoProCon-Bold.eot?#iefix") format("eot"),
+	// 	url("../fonts/AltoProCon-Bold.woff") format("woff"),
+	// 	url("../fonts/AltoProCon-Bold.ttf") format("truetype");
+	// src:url("../fonts/AltoProCon-Bold.woff") format("woff");
+	font-display: swap;
+	font-weight: 700;
+}
+
+
+
+html {
+	font-size: 20px;
+	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+	-webkit-text-size-adjust: 100%;
+	display: flex;
+    min-height: 100%;
+    width: 100%;
+}
+
+body { 
+	@include AltoProCon($normal);
+	color: $secondary;
+	font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased;
+	-ms-font-smoothing:antialiased;
+	-moz-font-smoothing:antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%;
+	@include base;
+	min-height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+	@include media('tab-mid') {
+		font-size: rem(18);
+	}
+	> #__nuxt {
+		min-height: 100%;
+		> #__layout {
+			min-height: 100%;
+			display: flex;
+			> div {
+				display: flex;
+				min-height: 100%;
+				flex-direction: column;
+				width: 100%;			
+			}		
+		}
+	}
+}
+
+.container {
+	// max-width: $container-width+$container-gutter*2;
+	// padding: 0 $container-gutter; 
+}
+
+/* 
+ * Main Font Sizes 
+ */
+
+ h1, .h1,
+ h2, .h2,
+ h3, .h3,
+ h4, .h4,
+ h5, .h5,
+ h6, .h6 {
+	 margin: 0 0 10px;
+	 @include AltoProCon($bold);
+	 color: $grey-900;
+ }
+
+h1, .h1 {
+	font-size: rem($h1-size);
+	line-height: 115%;
+}
+
+h2, .h2 {
+	@include x-large;
+}
+
+h3, .h3 {
+	@include large;
+}
+
+h4, .h4 {
+	@include base;
+}
+
+h5, .h5 {
+	font-size: rem($h5-size);
+	line-height: 140%;
+}
+
+h6, .h6 {
+	font-size: rem($h6-size);
+	line-height: 140%;
+}
+
+
+strong, .strong, b {
+	@include AltoProCon($bold);
+}
+
+.title-link {
+	margin-bottom: 54px;
+	@include media('tab') {
+		margin-bottom: 42px;
+	}
+	@include media('phone') {
+		margin-bottom: 32px;
+	}
+	p {
+		margin: 0;
+		@include large;
+		@include media('tab') {
+			font-size: rem(21);
+		}
+		> span {
+			@include media('tab') {
+				display: none;
+			}
+		}
+	}
+}
+
+.content-page {
+	h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+		margin-bottom: 0;
+	}
+	h2 {
+		padding: 48px 0px 8px;
+	}
+	h3 {
+		padding: 32px 0px 4px;
+	}
+	h4 {
+		padding: 24px 0px 0px;
+	}
+	p {
+		padding: 8px 0px;
+	}
+}
+
+p.small {
+	@include small;
+	padding: 8px 0px;
+}
+
+/*
+ * list Style
+ */
+
+ul,
+ol {
+	list-style: none;
+}
+
+ol { 
+	list-style-type: upper-roman;
+	list-style-position: inside;
+}
+
+a {
+	color: $secondary;
+	@include transition(all, 250, $ease-in-out);
+}
+
+a:hover,
+a:focus,
+a:active {
+	text-decoration: none;
+	color: $secondary;
+}
+
+.large-text {
+	font-size: rem(32);
+}
+.big-text {
+	font-size: rem(21);
+}
+.medium-text { 
+	font-size: rem(18);
+}
+.small-text { 
+	font-size: rem(16);
+}
+.smallest-text {
+	
+}

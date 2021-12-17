@@ -1,0 +1,15 @@
+
+.map-embed-page {
+    .map-box {
+        position: relative;
+        min-height: 100vh;
+        padding-top: 47.38372093023256%;
+        iframe {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}

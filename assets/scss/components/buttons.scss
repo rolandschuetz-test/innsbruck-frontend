@@ -1,0 +1,140 @@
+.button {
+    padding: 15px 24px 13px;
+    border-radius: 0;
+    border: 0;
+    height: auto;
+    @include AltoProCon($normal);
+    @include base;
+    z-index: 2;
+    @include transition(all, 250, $ease-in-out);
+    @include media('tab') {
+        padding: 15px 20px 12px;
+        font-size: rem(18);
+    }
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        border: 2px solid $primary;
+        z-index: -1;
+    }
+    &:after {
+        content: '' !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 0;
+        background-color: $red-600;
+        z-index: -1;
+        transition: background-color, transform #{$duration-fast}ms $ease-in-out;
+        display: block !important;
+        font-size: 0 !important;
+        margin: 0 !important;
+        width: 100%;
+        transform-origin: right center;
+        transform: scaleX(0);
+    }
+    &[disabled] {
+        color: $white;
+        opacity: 1;
+        &:before {
+            border-color: $grey-400;
+            background: $grey-400;
+        }
+        &:after {
+            background: $grey-400;
+        }
+    }
+
+    &.is-small {
+        @include small;
+        padding: 10px 16px 8px;
+    }
+
+    // Icons
+    .icon {
+        margin-right: -4px !important;
+        &.is-small, &.is-medium, &.is-large, & {
+            height: auto;
+            width: auto;
+        }
+        display: flex;
+        align-items: center;
+        .mdi {
+            display: flex;
+            align-items: center;
+            &:before {
+                @extend %icomoon;
+                font-size: rem(16);
+                margin-top: -1px;
+            }
+            &.mdi-tip-right {
+                &:before {
+                    content: "\e933";
+                }
+            }
+            &.mdi-link-right {
+                &:before {
+                    content: "\e910";
+                }
+            }
+            &.mdi-tip-down {
+                &:before {
+                    content: "\e932";
+                }
+            }
+        }
+    }
+    // tip-right
+    &.is-primary, & {
+        &:not([disabled]) {
+            background: $primary !important;
+            color: $white !important;
+            &:hover:not([disabled]), &.active:not([disabled]) {
+                background: $primary;
+                color: $white;
+                &:after {
+                    transform-origin: left center;
+                    transform: scaleX(1);                
+                }
+            }
+            &:active {
+                &:after {
+                    background-color: $red-700;
+                }
+            }
+        }
+        
+    }
+    &.is-secondary {
+        &:not(:active) {
+            &:not([disabled]) {
+                background: none !important;
+                color: $secondary !important;
+                &:before {
+                    border-color: $grey-200;
+                }
+                &:after {
+                    background-color: $primary;
+                }
+                &:hover, &.active {
+                    color: $white !important;
+                }
+            }
+        }
+        &[disabled] {
+            color: $secondary;
+            &:before {
+                border-color: $grey-300;
+                background: $grey-50;
+            }
+            &:after {
+                background: $grey-50;
+            }
+        }
+    }
+}

@@ -1,0 +1,29 @@
+
+.content-page {
+    padding: 64px 0 49px;
+    @include media('desk') {
+        padding: 56px 0 49px;
+    }
+    @include media('tab-mid') {
+        padding: 48px 0 49px;
+    }
+    @include media('tab') {
+        padding: 40px 0 49px;
+    }
+    @include media('phone') {
+        padding: 32px 0 49px;
+    }
+    p, ul:not(.download-list, .link-list, .contact-info), ol {
+        line-height: 150%;
+    }
+    .content-page-wrap > {
+        h1, h2, h3, h4, h5, h6, div, p, ol, ul {
+            &:first-child {
+                padding-top: 0;
+            }
+        }
+    }
+}
+.content-page-wrap {
+    max-width: 740px;
+}

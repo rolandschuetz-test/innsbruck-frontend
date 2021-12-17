@@ -1,0 +1,575 @@
+//FONTS
+@mixin AltoProCon($weight) {
+	font-family: "AltoProCon", sans-serif;
+	font-weight: $weight;
+}
+
+
+// Transitions
+@mixin transition($transition-property, $speed, $curve) {
+	transition: $transition-property #{$speed}ms $curve;
+}
+
+
+/// Calc
+/// @example
+/// //SCSS
+/// .calc{
+/// 	 @include calc(width,'100% - 20px');
+///	}
+/// //CSS
+/// .calc {
+///		width: calc(100% - 20px);
+///	}
+
+@mixin calc($prop, $val) {
+  #{$prop}: calc(#{$val});
+}
+
+//OTHER MIXINS
+@mixin absoluteCenter {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	//@include translate;
+}
+
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+/// Full Width Containers in Limited Width Parents
+/// @example
+/// //SCSS
+/// .full-width {
+/// 	@include full-width(margin, 960px);
+/// }
+/// //CSS
+/// .full-width {
+///   margin-left: calc(-50vw + 50%);
+///   margin-right: calc(-50vw + 50%);
+/// }
+@mixin full-width($support-type: margin,$min-width:null){
+	@if $support-type == 'margin' {
+		margin-left: calc(-50vw + 50%);
+		margin-right: calc(-50vw + 50%);
+	}
+
+	@if $support-type == 'position' {
+		width: 100vw;
+		position: relative;
+		left: 50%;
+		right: 50%;
+		margin-left: -50vw;
+		margin-right: -50vw;
+	}
+  
+	@if $support-type == 'translate' {
+		width: 100vw;
+		transform: translateX(calc((#{$min-width} - 100vw)/2));
+	}
+}
+
+
+/// position`
+/// //SCSS
+/// 
+/// .absolute{
+///   	@include position(absolute,top 10px right 20px);
+/// }
+/// .absolute{
+///   @include position(absolute,top 0 right 0 bottom 0 left 0);
+/// }
+///	
+/// //Output CSS
+/// 
+/// .absolute {
+///   top: 10px;
+///   right: 20px;
+///   position: absolute; 
+/// }
+/// 
+/// .absolute {
+///   top: 0;
+///   right: 0;
+///   bottom: 0;
+///   left: 0;
+///   position: absolute; 
+/// }
+/// @param {string} $position : `static` | `relative` | `absolute` | `fixed`
+/// @param {string} $args -: `top` | `right` | `bottom` | `left`
+
+@mixin position($position,$args){
+	@each $o in top right bottom left {
+		$i: index($args, $o);
+		@if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number {
+			#{$o}: nth($args, $i + 1);
+		}
+	}
+	position: $position;
+}
+
+
+@mixin placeholder-text($color){
+	&::-webkit-input-placeholder {
+	   color: $color;
+	}
+	&:-moz-placeholder { /* Firefox 18- */
+	color: $color;
+	}
+	&::-moz-placeholder {  /* Firefox 19+ */
+	   color: $color;
+	}
+	&:-ms-input-placeholder {  
+	   color: $color;
+	}
+}
+
+@mixin disable-select() {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+
+/* Media Query Manager
+*   $grid-breakpoints: (
+*       xs: 0,
+*       sm: 576px,
+*       md: 768px,
+*       lg: 992px,
+*       xl: 1200px
+* ) !default;
+* 
+* $breakpoint argument choices :
+* - phone
+* - tab
+* - desk
+* 
+*
+* ORDER: Base + Typography > General Layout + Grid > Page Layout > Components
+**/
+
+@mixin media($breakpoint) {
+	@if $breakpoint == phone {
+		@media( max-width: #{map-get($grid-breakpoints , sm) - 1} ) { @content };
+	}	
+	@if $breakpoint == tab {
+		@media( max-width: #{map-get($grid-breakpoints , md) - 1} ) { @content };
+	}
+	@if $breakpoint == tab-mid {
+		@media( max-width: #{map-get($grid-breakpoints , lg) - 1} ) { @content };
+	}
+	@if $breakpoint == desk {
+		@media( max-width: #{map-get($grid-breakpoints , ml) - 1} ) { @content };
+	}
+	@if $breakpoint == desk-large {
+		@media( max-width: #{map-get($grid-breakpoints , xl) - 1} ) { @content };
+	}
+}
+
+
+@mixin media_min($breakpoint) {
+	@if $breakpoint == phone {
+		@media( min-width: map-get($grid-breakpoints , sm) ) { @content };
+	}	
+	@if $breakpoint == tab {
+		@media( min-width: map-get($grid-breakpoints , md) ) { @content };
+	}
+	@if $breakpoint == tab-mid {
+		@media( min-width: map-get($grid-breakpoints , lg) ) { @content };
+	}
+	@if $breakpoint == desk {
+		@media( min-width: map-get($grid-breakpoints , ml) ) { @content };
+	}
+	@if $breakpoint == desk-large {
+		@media( min-width: map-get($grid-breakpoints , xl) ) { @content };
+	}
+}
+
+
+/* Arrow with Four Optional Directions => SCSS */
+@mixin arrow($direction: down, $size: 5px, $color: #555) {
+	width: 0;
+	height: 0;
+	@if ($direction == left) {
+		border-top: $size solid transparent;
+		border-bottom: $size solid transparent; 
+		border-right: $size solid $color;
+	}
+	@else if ($direction == right) {
+		border-top: $size solid transparent;
+		border-bottom: $size solid transparent; 
+		border-left: $size solid $color;
+	}
+	@else if ($direction == down) {
+		border-left: $size solid transparent;
+		border-right: $size solid transparent;
+		border-top: $size solid $color;
+	}
+	@else {
+		border-left: $size solid transparent;
+		border-right: $size solid transparent;
+		border-bottom: $size solid $color;
+	}
+ }
+
+ //Usage
+ // without arguments (default) => @include arrow(); 
+ // with custom arguments => @include arrow(up, 10px, #efefef);
+
+
+/* Fixed Aspect Ratio => SCSS */
+@mixin aspect-ratio($width, $height) {
+	position: relative;
+	&:before {
+	   display: block;
+	   content: "";
+	   width: 100%;
+	   padding-top: ($height / $width) * 100%;
+	}
+	> .inner-box {
+	   position: absolute;
+	   top: 0;
+	   left: 0;
+	   right: 0;
+	   bottom: 0;
+	}
+ }
+ //Usage <div class="outer-box"> <div class="inner-box"></div> </div>
+ //Usage => @include aspect-ratio(4, 3);
+
+
+/* Text Shortening => SCSS */
+@mixin text-shorten {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+// Usage => @include text-shorten();
+
+
+// Fonts
+// 61px / 115%
+@mixin fourX-large {
+	font-size: rem($fourX-large);
+	line-height: $lineheight-fourX-large;
+	@include media('tab') {
+		font-size: rem($tab-fourX-large);
+	}
+}
+// 49px / 115%
+@mixin threeX-large {
+	font-size: rem($threeX-large);
+	line-height: $lineheight-threeX-large;
+	@include media('tab') {
+		font-size: rem($tab-threeX-large);
+	}
+}
+// 39px / 115%
+@mixin twoX-large {
+	font-size: rem($twoX-large);
+	line-height: $lineheight-twoX-large;
+	@include media('tab') {
+		font-size: rem($tab-twoX-large);
+	}
+}
+// 31px / 115%
+@mixin x-large {
+	font-size: rem($x-large);
+	line-height: $lineheight-x-large;
+	@include media('tab') {
+		font-size: rem($tab-x-large);
+	}
+}
+// 25px / 115%
+@mixin large {
+	font-size: rem($large);
+	line-height: $lineheight-large;
+	@include media('tab') {
+		font-size: rem($tab-large);
+	}
+}
+// 20px / 140%
+@mixin base {
+	font-size: rem($base);
+	line-height: $lineheight-base;
+	@include media('tab') {
+		font-size: rem($tab-base);
+	}
+}
+// 20px / 150%
+@mixin base-content {
+	font-size: rem($base-content);
+	line-height: $lineheight-base-content;
+	@include media('tab') {
+		font-size: rem($tab-base-content);
+	}
+}
+// 16px / 140%
+@mixin small {
+	font-size: rem($small);
+	line-height: $lineheight-small;
+	@include media('tab') {
+		font-size: rem($tab-small);
+	}
+}
+
+
+// Underline
+%line-transition {
+	@include transition(all, 250, $ease-in-out);
+}
+%external-link {
+	position: relative;
+    &:after {
+        content: "\e910";
+        @extend %icomoon;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: rem(24);
+        margin-left: 4px;
+		color: $grey-600;
+		@extend %line-transition;
+    }
+	
+	&:hover {
+		&:after {
+			@extend %line-hover-color;
+		}
+	}
+	&:focus {
+		&:after {
+			@extend %line-focus-color;
+		}
+	}
+}
+%line-hover-color {
+    color: $primary;
+
+	// Remove style for touch devices
+	@media (hover: none) and (pointer: coarse) {
+		color: $grey-600;
+	}
+}
+%line-focus-color {
+    color: $red-600;
+
+	// Remove style for touch devices
+	@media (hover: none) and (pointer: coarse) {
+		color: $red-600;
+	}
+}
+%line-hover {
+    background-size: 0 2px, 100% 2px, 100% 2px;
+    background-position: left bottom, left bottom, left bottom;
+
+	// Remove style for touch devices
+	@media (hover: none) and (pointer: coarse) {
+		background-size: 0 2px, 0 2px, 100% 2px !important;
+		background-position: right bottom, right bottom, right bottom !important;
+	}
+}
+%line-focus {
+    background-size: 100% 2px, 100% 2px, 100% 2px;
+}
+
+span.line {
+    // color: $secondary;
+    background: linear-gradient(rgba($red-600, 1), rgba($red-600, 1)) top / 0 2px no-repeat,
+                // linear-gradient(rgba($primary, 0.6), rgba($primary, 0.6)) bottom / 0 2px no-repeat, 
+                linear-gradient(rgba($primary, 1), rgba($primary, 1)) bottom / 0 2px no-repeat, 
+                linear-gradient(rgba($secondary, 0.15), rgba($secondary, 0.15)) top / 100% 2px no-repeat;
+    @include transition(background-size, 300, $ease-in-out);
+    background-position: right bottom, right bottom, right bottom;
+}
+
+
+a.underline {
+    color: $secondary;
+	position: relative;
+	&:hover {
+		color: $primary;
+		span.line {
+			background-size: 0 2px, 100% 2px, 100% 2px !important;
+			background-position: left bottom, left bottom, left bottom !important;
+		}
+
+		// Remove style for touch devices
+		@media (hover: none) and (pointer: coarse) {
+			color: $secondary;
+			span.line {
+				background-size: 0 2px, 0 2px, 100% 2px !important;
+				background-position: right bottom, right bottom, right bottom !important;
+			}
+		}
+    }
+    &:focus {
+        color: $red-600;
+        span.line {
+            background-size: 100% 2px, 100% 2px, 100% 2px !important;
+        }
+
+		// Remove style for touch devices
+		@media (hover: none) and (pointer: coarse) {
+			color: $red-600;
+		}
+    }
+	&.arrow {
+		&:after {
+			content: "\e933";
+			@extend %icomoon;
+			font-size: rem(14);
+			margin-left: 4px;
+			top: 2px;
+			position: relative;
+		}
+	}
+
+    // grey-900
+	&.grey-900 {
+		&[href^="http"], &[href^="http"] {
+			&:after {
+				color: $grey-600;
+			}
+			&:hover {
+				&:after {
+					color: $red-500;
+				}
+			}
+			&:focus {
+				&:after {
+					color: $red-600;
+				}
+			}
+		}
+	}
+    &.grey-900:not(:hover):not(:focus) {
+        color: $grey-900;
+    }
+
+    // red-500
+    &.red-500 {
+        color: $primary;
+		span.line {
+			background: linear-gradient(rgba($red-600, 1), rgba($red-600, 1)) top / 0 2px no-repeat,
+						// linear-gradient(rgba($primary, 0.6), rgba($primary, 0.6)) bottom / 0 2px no-repeat, 
+						linear-gradient(rgba($primary, 1), rgba($primary, 1)) bottom / 0 2px no-repeat, 
+						linear-gradient($red-500-15, $red-500-15) top / 100% 2px no-repeat;
+			background-position: right bottom, right bottom, right bottom;
+		}
+        &:hover {
+            color: $primary;
+        }
+        &:focus {
+            color: $red-600;
+        }
+		&[href^="http"], &[href^="http"] {
+			&:after {
+				color: $red-500;
+			}
+			&:hover {
+				&:after {
+					color: $red-500;
+				}
+			}
+			&:focus {
+				&:after {
+					color: $red-600;
+				}
+			}
+		}
+    }
+
+    // blue-500
+    &.blue-500 {
+        color: $embed-text;
+		> span.line {
+			background: linear-gradient($embed-text, $embed-text) top / 0 2px no-repeat,
+						// linear-gradient($embed-text-a60, $embed-text-a60) bottom / 0 2px no-repeat, 
+						linear-gradient($embed-text, $embed-text) bottom / 0 2px no-repeat, 
+						linear-gradient($embed-text-a15, $embed-text-a15) top / 100% 2px no-repeat;
+			background-position: right bottom, right bottom, right bottom;
+		}
+        &:hover {
+            color: $embed-text;
+        }
+        &:focus {
+            color: $embed-text;
+        }
+    }
+
+	// White
+	&.white {
+		color: $white;
+		> span.line {
+			background: linear-gradient($white, $white) top / 0 2px no-repeat,
+						// linear-gradient($white-a80, $white-a80) bottom / 0 2px no-repeat, 
+						linear-gradient($white, $white) bottom / 0 2px no-repeat, 
+						linear-gradient($white-a40, $white-a40) top / 100% 2px no-repeat;
+			background-position: right bottom, right bottom, right bottom;
+		}
+        &:hover {
+            color: $white;
+        }
+        &:focus {
+            color: $white;
+        }
+		&[href^="http"], &[href^="http"] {
+			&:after {
+				color: $white;
+			}
+			&:hover {
+				&:after {
+					color: $white;
+				}
+			}
+			&:focus {
+				&:after {
+					color: $white;
+				}
+			}
+		}
+	}
+}
+
+
+// Overlay
+%overlay {
+	background: rgba($black, 0.10);
+}
+@mixin overlay {
+	position: relative;
+	z-index: 1;
+	&:before {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		@extend %overlay;
+		opacity: 0;
+		visibility: hidden;
+		@include transition(all, $duration-normal-1, $ease-in-out);
+		z-index: 1;
+	}
+}
+
+@mixin overlay-show {
+	opacity: 1;
+	visibility: visible;
+}
+
+// Images hover and focus effects
+@mixin imgHover {
+	transform: scale(1.05);
+}
+@mixin imgFocus {
+	transform: scale(1.07);
+}

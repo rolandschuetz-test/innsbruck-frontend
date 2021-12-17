@@ -1,0 +1,19 @@
+
+.last-update-block {
+    padding: 8px 0px 32px;
+    @include media('tab') {
+        padding-bottom: 15px;
+    }
+    .last-update-row {
+        @include small;
+        p {
+            padding: 0;
+        }
+    }
+}
+
+.page {
+    .last-update-block {
+        padding: 0;
+    }
+}

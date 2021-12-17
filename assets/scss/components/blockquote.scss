@@ -1,0 +1,12 @@
+
+.blockquote-block {
+    padding: 24px 0px;
+    .blockquote {
+        padding: 16px 16px 14px 19px;
+        background: $grey-50;
+        border-left: 3px solid $red-500;
+        p {
+            padding: 0;
+        }
+    }
+}

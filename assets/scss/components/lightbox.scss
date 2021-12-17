@@ -1,0 +1,148 @@
+
+html.overflowhidden { overflow:hidden; }
+html.overflowhidden body, html.overflowhidden header .info-block, html.overflowhidden header .header-main,
+html.is-clipped body, html.is-clipped header .info-block, html.is-clipped header .header-main {
+    padding-right: var(--pop-diff);
+}
+html.overflowhidden body.mac, html.overflowhidden header body.mac .info-block, html.overflowhidden body.mac header .header-main,
+html.is-clipped body.mac, html.is-clipped body.mac header .info-block, html.is-clipped body.mac header .header-main {
+    padding-right: 0;
+}
+.popouterbox {
+    bottom: 0;
+    display: none;
+    left: 0;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 999999999;
+    &::-webkit-scrollbar {
+        width: 0;  /* Remove scrollbar space */
+        background: transparent;  /* Optional: just make scrollbar invisible */
+    }
+    /* Optional: show position indicator in red */
+    &::-webkit-scrollbar-thumb {
+        background: #FF0000;
+    }
+    .popup-main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100%;
+        padding: 20px 0;
+        &.taller {
+            align-items: flex-start;
+        }
+    }
+    .popup-block {
+        display: block;
+        margin: 0 auto;
+        z-index: 99999;
+        max-width: 1070px;
+        width: 100%;
+        position: relative;
+    }
+}
+.modal-backdrop {
+    display: none;
+    background: $grey-900-a70;
+    backdrop-filter: blur(8px);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 9999;
+}
+.close-dialogbox {
+    position: fixed;
+    right: 32px;
+    top: 32px;
+    color: $white;
+    @include base;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    z-index: 11;
+    @include media('tab') {
+        right: 24px;
+        top: 24px;
+    }
+    i {
+        height: rem(24);
+        width: rem(24);
+        display: flex;
+        align-content: center;
+        align-items: center;
+        margin-left: 8px;
+        &:before {
+            font-size: rem(24);
+            @include media('tab') {
+                content: "\e906";
+            }
+        }
+    }
+    &:hover, &:focus {
+        color: $white;
+    }
+}
+
+.pop-contentbox {
+    width: 100%;
+}
+
+
+.pop-lightbox {
+    .caption-text {
+        color: $grey-50;
+        @include media('desk') {
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+        p {
+            .caption-copyright {
+                color: $grey-300;
+            }
+        }
+    }
+    .gallery-img {
+        .b-image-wrapper > {
+            img.has-ratio, img.placeholder {
+                transition: none;
+            }
+        }
+    }
+}
+
+.nav-bars {
+    height: 2px;
+    width: 22px;
+    flex: 1 0 22px;
+    position: relative;
+    margin-left: 12px;
+    margin-top: -2px;
+    @include media('tab') {
+        margin-top: -3px;
+    }
+}
+.nav-bars .bar {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: $grey-50;
+    display: block;
+    transform-origin: center;
+    @include media('tab') {
+        height: 1.5px;
+    }
+    &.bar1 {
+        transform: rotate(-45deg);
+    }
+    &.bar3 {
+        transform: rotate(45deg);
+    }
+}

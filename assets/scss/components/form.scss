@@ -1,0 +1,91 @@
+
+.select select, .taginput .taginput-container.is-focusable, .textarea, .input {
+    height: 56px;
+    padding: 7px 24px 5px;
+    background-color: $white;
+    font-size: $base;
+    color: $grey-700;
+    border-radius: 0;
+    border-width: 2px;
+    border-color: $grey-300;
+    box-shadow: none !important;
+    @include AltoProCon($normal);
+    @include base;
+    font-weight: $normal;
+    @include transition(all, 250, $ease-in-out);
+    @include media('tab') {
+        font-size: rem(18);
+    }
+    &::placeholder {
+        color: $grey-400;
+    }
+    &:hover {
+        border-color: $grey-400;
+    }
+    &:focus {
+        border-color: $grey-500;
+    }
+}
+.textarea {
+    padding: 15px 20px;
+}
+
+.b-checkbox.checkbox {
+    input[type=checkbox] {
+        + .check {
+            border-color: $grey-500;
+            height: 20px;
+            width: 20px;
+            border-radius: 0;
+            position: relative;
+            box-shadow: none !important;
+            @include transition(all, 250, $ease-in-out);
+            &:before {
+                content: "";
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                height: 16px;
+                width: 16px;
+                background-image: url(../images/check.svg);
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                opacity: 0;
+                @include transition(all, 250, $ease-in-out);
+            }
+        }
+        &:checked {
+            + .check {
+                border-color: $primary;
+                background: $primary;
+                &:before {
+                    opacity: 1;
+                }
+            }
+        }
+        &[disabled] {
+            &:checked + .check {
+                border-color: $grey-400;
+                background: $grey-400;
+            }
+            + .check {
+                border-color: $grey-400;
+            }
+        }
+    }
+    &[disabled] {
+        opacity: 1;
+        color: $secondary;
+    }
+    .control-label {
+        padding-left: 12px;
+        margin-top: 4px;
+    }
+    &:hover input[type=checkbox]:not(:disabled) + .check {
+        border-color: $primary;
+    }
+    &:focus input[type=checkbox]:not(:disabled) + .check {
+        border-color: $red-600;
+    }
+}
